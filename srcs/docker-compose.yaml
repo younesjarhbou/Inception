@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   nginx:
@@ -53,10 +53,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/youness/data/wp
+      device: /Users/a_1337/Desktop/ince_youness/home/youness/data/wp
   db_data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/youness/data/db
+      device: /Users/a_1337/Desktop/ince_youness/home/youness/data/db

@@ -1,20 +1,14 @@
 #!/bin/bash
 
 service mariadb start 
-sleep 10
-
-
-echo "CREATE DATABASE IF NOT EXISTS $MARIADB_NAME;" > db_inc.sql
-echo "CREATE USER IF NOT EXISTS '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';" >> db_inc.sql
-echo "GRANT ALL PRIVILEGES ON $MARIADB_NAME.* TO '$MARIADB_USER'@'%';" >> db_inc.sql
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_ROOT_PASSWORD';" >> db_inc.sql
-
-echo "FLUSH PRIVILEGES;" >> db_inc.sql
-
-mariadb  < db_inc.sql
+echo "CREATE DATABASE IF NOT EXISTS $DB_NAME;" > file_cmd.sql
+echo "CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';" >> file_cmd.sql
+echo "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%';" >> file_cmd.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';" >> dbfile_cmd_inc.sql
+echo "FLUSH PRIVILEGES;" >> file_cmd.sql
+mariadb  < file_cmd.sql
 
 sed -i  "s/127.0.0.1/0.0.0.0/g"  /etc/mysql/mariadb.conf.d/50-server.cnf
-# 
 
 kill $(cat /var/run/mysqld/mysqld.pid)
 
