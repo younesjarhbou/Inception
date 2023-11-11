@@ -1,22 +1,23 @@
 all:
-	docker-compose -f srcs/docker-compose.yaml build
+	sudo docker-compose -f srcs/docker-compose.yaml build
+	@sudo mkdir -p   "/home/yjarhbou/data/wp" "/home/yjarhbou/data/db"
 	
 build: all
 
 
 up: 
-	docker-compose -f srcs/docker-compose.yaml up -d
+	sudo docker-compose -f srcs/docker-compose.yaml up -d
 
 down: 
-	docker-compose -f srcs/docker-compose.yaml down
+	sudo docker-compose -f srcs/docker-compose.yaml down
 
 start: 
-	docker-compose -f srcs/docker-compose.yaml start
+	sudo docker-compose -f srcs/docker-compose.yaml start
 
 stop: 
-	docker-compose -f srcs/docker-compose.yaml stop
+	sudo docker-compose -f srcs/docker-compose.yaml stop
 
 restart: 
-	docker-compose -f srcs/docker-compose.yaml restart
-
-
+	sudo docker-compose -f srcs/docker-compose.yaml restart
+clean:
+	sudo docker system prune && sudo docker system prune --volumes 
