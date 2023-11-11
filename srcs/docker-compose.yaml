@@ -53,10 +53,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /Users/a_1337/Desktop/ince_youness/home/youness/data/wp
+      device: /home/yjarhbou/data/wp
   db_data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/a_1337/Desktop/ince_youness/home/youness/data/db
+      device: /home/yjarhbou/data/db
