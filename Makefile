@@ -1,7 +1,5 @@
 all:
-	sudo docker-compose -f srcs/docker-compose.yaml build
-	@sudo mkdir -p   "/home/yjarhbou/data/wp" "/home/yjarhbou/data/db"
-	
+	sudo docker-compose -f srcs/docker-compose.yaml build	
 build: all
 
 
@@ -20,4 +18,11 @@ stop:
 restart: 
 	sudo docker-compose -f srcs/docker-compose.yaml restart
 clean:
-	sudo docker system prune && sudo docker system prune --volumes 
+	docker container prune -f
+	docker volume prune -f
+	docker network prune -f
+
+fclean: clean
+	docker image prune -f	
+
+.PHONY: down build up ps clean fclean
